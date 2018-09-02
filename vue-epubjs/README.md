@@ -1,4 +1,4 @@
-# vue-cli3
+# vue-epubjs
 
 ## Project setup
 ```
