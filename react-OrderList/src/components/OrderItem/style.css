@@ -1,5 +1,5 @@
 .orderItem {
-  padding: 11px 10px 11px 15px;
+  padding: 11px 10px 11px  15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,6 +10,7 @@
 .orderItem__picContainer {
   padding-right: 10px;
   display: inline-block;
+
 }
 .orderItem__pic {
   width: 90px;
@@ -55,7 +56,7 @@
   margin-left: 10px;
 }
 .orderItem__price::before {
-  content: '\A5';
+  content: "\A5";
   margin-right: 1px;
 }
 .orderItem__btn {
@@ -72,3 +73,19 @@
 .orderItem__btn--grey {
   background-color: #999;
 }
+
+.orderItem__commentContainer {
+
+}
+.orderItem__commentContainer div {
+  display: flex;
+  margin-left: 10px;
+}
+
+
+.orderItem_star--light {
+  color: #e9203d;
+}
+.orderItem__stars {
+color: #777;     
+} 
