@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>javascript 实现字典散列表 | 网络日志 | Web Developer &amp; Designer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="JavaScript,算法">
+    <meta name="description" content="你已经知道，集合表示一组互不相同的元素（不重复的元素）。在字典中，存储的是[键，值] 对，其中键名是用来查询特定元素的。字典和集合很相似，集合以[值，值]的形式存储元素，字 典则是以[键，值]的形式来存储元素。字典也称作映射。 将要实现的类就是以 ECMAScript 6 中 Map 类的实现为基础的。你会发现它和 Set 类很相似（但不同于存储[值，值]对的形式，我们将要存储的是[键，值]对）。">
+<meta name="keywords" content="JavaScript,算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript 实现字典散列表">
+<meta property="og:url" content="http://lwwtotod.github.io/2018/01/13/JavaScript/javascript实现字典散列表/index.html">
+<meta property="og:site_name" content="网络日志">
+<meta property="og:description" content="你已经知道，集合表示一组互不相同的元素（不重复的元素）。在字典中，存储的是[键，值] 对，其中键名是用来查询特定元素的。字典和集合很相似，集合以[值，值]的形式存储元素，字 典则是以[键，值]的形式来存储元素。字典也称作映射。 将要实现的类就是以 ECMAScript 6 中 Map 类的实现为基础的。你会发现它和 Set 类很相似（但不同于存储[值，值]对的形式，我们将要存储的是[键，值]对）。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-16T03:35:26.469Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript 实现字典散列表">
+<meta name="twitter:description" content="你已经知道，集合表示一组互不相同的元素（不重复的元素）。在字典中，存储的是[键，值] 对，其中键名是用来查询特定元素的。字典和集合很相似，集合以[值，值]的形式存储元素，字 典则是以[键，值]的形式来存储元素。字典也称作映射。 将要实现的类就是以 ECMAScript 6 中 Map 类的实现为基础的。你会发现它和 Set 类很相似（但不同于存储[值，值]对的形式，我们将要存储的是[键，值]对）。">
+    
+        <link rel="alternate" type="application/atom+xml" title="网络日志" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">blankserver</h5>
+          <a href="mailto:简介" title="简介" class="mail">简介</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">javascript 实现字典散列表</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">javascript 实现字典散列表</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-01-13T08:07:32.000Z" itemprop="datePublished" class="page-time">
+  2018-01-13
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-JavaScript/javascript实现字典散列表"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">javascript 实现字典散列表</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-01-13 16:07:32" datetime="2018-01-13T08:07:32.000Z"  itemprop="datePublished">2018-01-13</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>你已经知道，集合表示一组互不相同的元素（不重复的元素）。在字典中，存储的是[键，值] 对，其中键名是用来查询特定元素的。字典和集合很相似，集合以[值，值]的形式存储元素，字 典则是以[键，值]的形式来存储元素。字典也称作映射。</p>
+<p>将要实现的类就是以 ECMAScript 6 中 Map 类的实现为基础的。你会发现它和 Set 类很相似（但不同于存储[值，值]对的形式，我们将要存储的是[键，值]对）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dictionary</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> items = &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.has = <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> key <span class="keyword">in</span> items</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.set = <span class="function"><span class="keyword">function</span>(<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">    items[key] = value</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.remove = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.has(key)) &#123;</span><br><span class="line">      <span class="keyword">delete</span> items[key]</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.get = <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.has(key) ? items[key] : nuderfined</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.values = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> values = []</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> k <span class="keyword">in</span> items) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.has(k)) &#123;</span><br><span class="line">        values.push(items[k])</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> values</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.clear = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    items = &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.size = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.keys(items).length</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.keys = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.keys(items)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.getItems = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> items</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> dictionary = <span class="keyword">new</span> Dictionary()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// var loseloseHashCode = function(key) &#123;</span></span><br><span class="line"><span class="comment">//   var hash = 0</span></span><br><span class="line"><span class="comment">//   for (var i = 0; i &lt; key.length; i++) &#123;</span></span><br><span class="line"><span class="comment">//     hash += key.charCodeAt(i)</span></span><br><span class="line"><span class="comment">//   &#125;</span></span><br><span class="line"><span class="comment">//   return hash % 37</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="keyword">var</span> loseloseHashCode = <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> hash = <span class="number">5381</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; key.length; i++) &#123;</span><br><span class="line">    hash = hash * <span class="number">33</span> + key.charCodeAt(i)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> hash % <span class="number">1013</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">HashTable</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> table = []</span><br><span class="line">  <span class="keyword">this</span>.put = <span class="function"><span class="keyword">function</span>(<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> position = loseloseHashCode(key)</span><br><span class="line">    <span class="built_in">console</span>.log(position + <span class="string">'-'</span> + key)</span><br><span class="line">    table[position] = value</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.get = <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> table[loseloseHashCode(key)]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.remove = <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">    table[loseloseHashCode(key)] = <span class="literal">undefined</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> hash = <span class="keyword">new</span> HashTable()</span><br><span class="line">hash.put(<span class="string">'Gandalf'</span>, <span class="string">'gandalf@email.com'</span>)</span><br><span class="line">hash.put(<span class="string">'John'</span>, <span class="string">'johnsnow@email.com'</span>)</span><br><span class="line">hash.put(<span class="string">'Tyrion'</span>, <span class="string">'tyrion@email.com'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(hash.get(<span class="string">'Gandalf'</span>))</span><br><span class="line"><span class="built_in">console</span>.log(hash.get(<span class="string">'Loiane'</span>))</span><br><span class="line">hash.remove(<span class="string">'Gandalf'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(hash.get(<span class="string">'Gandalf'</span>))</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-04-16T03:35:26.469Z" itemprop="dateUpdated">2019-04-16 11:35:26</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/01/13/JavaScript/javascript实现字典散列表/" target="_blank" rel="external">http://lwwtotod.github.io/2018/01/13/JavaScript/javascript实现字典散列表/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://lwwtotod.github.io">
+            <img src="/img/avatar.jpg" alt="blankserver">
+            blankserver
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lwwtotod.github.io/2018/01/13/JavaScript/javascript实现字典散列表/&title=《javascript 实现字典散列表》 — 网络日志&pic=http://lwwtotod.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lwwtotod.github.io/2018/01/13/JavaScript/javascript实现字典散列表/&title=《javascript 实现字典散列表》 — 网络日志&source=Beijing, China" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lwwtotod.github.io/2018/01/13/JavaScript/javascript实现字典散列表/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《javascript 实现字典散列表》 — 网络日志&url=http://lwwtotod.github.io/2018/01/13/JavaScript/javascript实现字典散列表/&via=http://lwwtotod.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lwwtotod.github.io/2018/01/13/JavaScript/javascript实现字典散列表/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/01/13/Hexo/1/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">hexo 1</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/01/13/JavaScript/javascript实现排序算法/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JavaScript 实现排序算法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>blankserver &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lwwtotod.github.io/2018/01/13/JavaScript/javascript实现字典散列表/&title=《javascript 实现字典散列表》 — 网络日志&pic=http://lwwtotod.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lwwtotod.github.io/2018/01/13/JavaScript/javascript实现字典散列表/&title=《javascript 实现字典散列表》 — 网络日志&source=Beijing, China" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lwwtotod.github.io/2018/01/13/JavaScript/javascript实现字典散列表/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《javascript 实现字典散列表》 — 网络日志&url=http://lwwtotod.github.io/2018/01/13/JavaScript/javascript实现字典散列表/&via=http://lwwtotod.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lwwtotod.github.io/2018/01/13/JavaScript/javascript实现字典散列表/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACr0lEQVR42u3aQXbjIBAEUN//0pkDZGRXNXSeF1+rPFkRfBaAqnm94uvn4fr9zPs7T+/8/fz7Xy9feHh4eJe6njT2dCfpXH4nb+s/Q4CHh4e3xnuaUU+e+dBwMIef9AcPDw/vm3n5xreY0Eet4OHh4X0z7/32+v0bkgCi3aDj4eHh/T3v1uuScHa2mV7PWvDw8PAme9cPMcH3/L1S38PDw8M7rqq3oWobK7Rdr3uLh4eHt8A7efVJjNsuObN+4uHh4W3wzjeySfTQhgjnQ4mHh4e3x8un4KTc1S4G+dR/1B88PDy8BV7ywZ+HDrMyVRt8JL3Fw8PD2+Pl8Ws7HHUuUrYehRR4eHh4V3n5NJ0fh2oDi3ajXCw8eHh4eGu82ef93eCgXR6iIcPDw8Nb4yXhQv7rSXAwC2eLM2V4eHh4l3izyf289DWLdJMF48LahYeHh/eWl0/udQNrxw6iv/Hw8PAWeG1YMCvqt/HuhSVhloXg4eHhBby8mJQcxpp1+iSk+PC/eHh4eMu82TLQRgntMnC0IOHh4eEt8JIJui1uJRHGbNM8DCPw8PDw1nizkKKNMPKYY/bMK7/w8PDwRrzzQ1cn+XHS7uz+tTNleHh4eA+8ZC5NutgeCGi34O3GGg8PD2+Dl5CSAKIdlLa4lZfWHstgeHh4eGu8lam5vH/rDh4eHt42Ly9r5cvArUNaR3EwHh4e3p/wZkep2gOpsyCjPWqAh4eHd5f3U17JEMxi2TaMiIpqeHh4eAu8dsI9ORp1d8huLSR4eHh4M1778Z/8OtvTJrx6WcLDw8Nb480qR7MNbl3+v5W14OHh4X0lrz1odbJBj96Gh4eH98W82eTeHjioW8HDw8Nb47Ux6ywayIPgfMn5QMXDw8Nb4A0/8uNJvL3zfmN9ubKHh4eH1/H+AXZaXpMWMfosAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":230,"height":500},"mobile":{"show":true},"react":{"opacity":0.8},"log":false});</script></body>
+</html>

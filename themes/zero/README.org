@@ -1,0 +1,34 @@
+** Update
+
+Now, it has a performance in mobile. 
+
+** Note
+
+I have merged branch dev to master :) Now, you can enjoy a simpler zero.
+
+Add local search feature, so you can have what you need. Just use search instead of tag and category.
+
+** Introduction
+
+hmm.. :) It's a version 0.1.0 . Here is a preview:
+
+[[./preview/zero.jpg]]
+
+** Usage
+
+#+BEGIN_SRC sh
+  # cd your-blog
+  git clone https://github.com/loveminimal/hexo-theme-zero.git ./themes/zero
+#+END_SRC
+
+Note that: you must disable the =highlight= of site =_config.yml=, like this:
+
+#+BEGIN_EXAMPLE
+  highlight:
+    enable: false
+    line_number: false
+    auto_detect: false
+    tab_replace:
+#+END_EXAMPLE
+
+and update =theme= fragment as =zero=.

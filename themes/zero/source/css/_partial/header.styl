@@ -1,0 +1,25 @@
+.header
+  display: flex
+  align-items: baseline
+  justify-content: flex-start
+  a
+    text-decoration: none
+    color: #800080
+
+  .logo
+    // font-size: 2em
+    img 
+      width: 60px
+
+  .nav
+    font-size: 1.4em
+    .menu
+      display: flex
+      .menu-item
+        list-style: none
+        margin: 0 12%
+        transition: all 0.3s linear
+        &:hover
+          transform: scale(1.2)
+        .menu-item-link:hover
+          color: #4169E1

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>javascript 实现队列 | 网络日志 | Web Developer &amp; Designer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="JavaScript,算法">
+    <meta name="description" content="什么是队列队列是遵循 FIFO（First In First Out，先进先出，也称为先来先服务）原则的一组有序的项。 队列在尾部添加新元素，并从顶部移除元素。最新添加的元素必须排在队列的末尾。 在计算机科学中，一个常见的例子就是打印队列。比如说我们需要打印五份文档。我们会打 开每个文档，然后点击打印按钮。每个文档都会被发送至打印队列。第一个发送到打印队列的文 档会首先被打印，以此类推，直到打印完">
+<meta name="keywords" content="JavaScript,算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript 实现队列">
+<meta property="og:url" content="http://lwwtotod.github.io/2017/01/13/JavaScript/javascript实现队列/index.html">
+<meta property="og:site_name" content="网络日志">
+<meta property="og:description" content="什么是队列队列是遵循 FIFO（First In First Out，先进先出，也称为先来先服务）原则的一组有序的项。 队列在尾部添加新元素，并从顶部移除元素。最新添加的元素必须排在队列的末尾。 在计算机科学中，一个常见的例子就是打印队列。比如说我们需要打印五份文档。我们会打 开每个文档，然后点击打印按钮。每个文档都会被发送至打印队列。第一个发送到打印队列的文 档会首先被打印，以此类推，直到打印完">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-16T03:35:39.069Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript 实现队列">
+<meta name="twitter:description" content="什么是队列队列是遵循 FIFO（First In First Out，先进先出，也称为先来先服务）原则的一组有序的项。 队列在尾部添加新元素，并从顶部移除元素。最新添加的元素必须排在队列的末尾。 在计算机科学中，一个常见的例子就是打印队列。比如说我们需要打印五份文档。我们会打 开每个文档，然后点击打印按钮。每个文档都会被发送至打印队列。第一个发送到打印队列的文 档会首先被打印，以此类推，直到打印完">
+    
+        <link rel="alternate" type="application/atom+xml" title="网络日志" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">blankserver</h5>
+          <a href="mailto:简介" title="简介" class="mail">简介</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">javascript 实现队列</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">javascript 实现队列</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-13T08:07:32.000Z" itemprop="datePublished" class="page-time">
+  2017-01-13
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#什么是队列"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是队列</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#优先队列"><span class="post-toc-number">2.</span> <span class="post-toc-text">优先队列</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-JavaScript/javascript实现队列"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">javascript 实现队列</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-01-13 16:07:32" datetime="2017-01-13T08:07:32.000Z"  itemprop="datePublished">2017-01-13</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h4 id="什么是队列"><a href="#什么是队列" class="headerlink" title="什么是队列"></a>什么是队列</h4><p>队列是遵循 FIFO（First In First Out，先进先出，也称为先来先服务）原则的一组有序的项。 队列在尾部添加新元素，并从顶部移除元素。最新添加的元素必须排在队列的末尾。</p>
+<p>在计算机科学中，一个常见的例子就是打印队列。比如说我们需要打印五份文档。我们会打 开每个文档，然后点击打印按钮。每个文档都会被发送至打印队列。第一个发送到打印队列的文 档会首先被打印，以此类推，直到打印完所有文档</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建队列类方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">this</span>.items = []</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//相队列尾部添加一个元素</span></span><br><span class="line">  enqueue(element) &#123;</span><br><span class="line">    <span class="keyword">this</span>.items.push(element)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//移除队列的一个个元素</span></span><br><span class="line">  dequeue() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.items.shift()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 返回队列第一个元素,第一个被添加的元素</span></span><br><span class="line">  front() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.items[<span class="number">0</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 查看队列是否为空</span></span><br><span class="line">  isEmpty() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.items.length == <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 清除队列</span></span><br><span class="line">  clear() &#123;</span><br><span class="line">    <span class="keyword">this</span>.items = []</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 返回队列包含的元素个数</span></span><br><span class="line">  size() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.items.length</span><br><span class="line">  &#125;</span><br><span class="line">  print() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.items.toString())</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//测试用例</span></span><br><span class="line"><span class="keyword">const</span> queue = <span class="keyword">new</span> Queue()</span><br><span class="line"><span class="built_in">console</span>.log(queue.isEmpty())</span><br><span class="line">queue.enqueue(<span class="string">'John'</span>)</span><br><span class="line">queue.enqueue(<span class="string">'Jack'</span>)</span><br><span class="line">queue.print()</span><br></pre></td></tr></table></figure>
+
+<h4 id="优先队列"><a href="#优先队列" class="headerlink" title="优先队列"></a>优先队列</h4><p>队列大量应用在计算机科学以及我们的生活中，我们在之前话题中实现的默认队列也有一些 修改版本。<br>其中一个修改版就是优先队列。元素的添加和移除是基于优先级的。一个现实的例子就是机 场登机的顺序。头等舱和商务舱乘客的优先级要高于经济舱乘客。在有些国家，老年人和孕妇（或 带小孩的妇女）登机时也享有高于其他乘客的优先级。<br>另一个现实中的例子是医院的（急诊科）候诊室。医生会优先处理病情比较严重的患者。通 常，护士会鉴别分类，根据患者病情的严重程度放号。</p>
+<p>实现一个优先队列，有两种选项：设置优先级，然后在正确的位置添加元素；或者用入列操 作添加元素，然后按照优先级移除它们。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">PriorityQuene</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> items = []</span><br><span class="line">  <span class="comment">//创建一个特殊的元素.包含优先级</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">QueneElement</span>(<span class="params">element, priority</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.element = element</span><br><span class="line">    <span class="keyword">this</span>.priority = priority</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 入队方法</span></span><br><span class="line">  <span class="keyword">this</span>.enquene = <span class="function"><span class="keyword">function</span> (<span class="params">element, priority</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 实例化元素</span></span><br><span class="line">    <span class="keyword">var</span> quemeElement = <span class="keyword">new</span> QueneElement(element, priority)</span><br><span class="line">    <span class="comment">// 如果队列是空的那么直接push</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.isEmpty()) &#123;</span><br><span class="line">      <span class="keyword">this</span>.push(quemeElement)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 否则遍历队列中的元素比较优先级</span></span><br><span class="line">      <span class="keyword">var</span> added = <span class="literal">false</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">        <span class="comment">// 如果新的元素优先级比更高那么在它前面push(1代表最高优先级</span></span><br><span class="line">        <span class="keyword">if</span> (quemeElement.priority &lt; items[i].priority) &#123;</span><br><span class="line">          items.splice(i, <span class="number">0</span>, quemeElement)</span><br><span class="line">          added = <span class="literal">true</span></span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 如果没有找到更高的优先级那么自己push到后面</span></span><br><span class="line">      <span class="keyword">if</span>(!added)&#123;</span><br><span class="line">        items.push(quemeElement)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<script>
+export default {
+  mounted() {
+    class Queue {
+      constructor() {
+        this.items = []
+      }
+      enqueue(element) {
+        this.items.push(element)
+      }
+      dequeue() {
+        return this.items.shift()
+      }
+      front() {
+        return this.items[0]
+      }
+      isEmpty() {
+        return this.items.length == 0
+      }
+      clear() {
+        this.items = [];
+      }
+      size() {
+        return this.items.length
+      }
+      print() {
+        console.log(this.items.toString())
+      }
+    }
+
+    var queue = new Queue(); 
+    console.log(queue.isEmpty()); 
+    queue.enqueue("John"); 
+    queue.enqueue("Jack"); 
+    queue.print();
+  },
+}
+</script>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-04-16T03:35:39.069Z" itemprop="dateUpdated">2019-04-16 11:35:39</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/01/13/JavaScript/javascript实现队列/" target="_blank" rel="external">http://lwwtotod.github.io/2017/01/13/JavaScript/javascript实现队列/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://lwwtotod.github.io">
+            <img src="/img/avatar.jpg" alt="blankserver">
+            blankserver
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lwwtotod.github.io/2017/01/13/JavaScript/javascript实现队列/&title=《javascript 实现队列》 — 网络日志&pic=http://lwwtotod.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lwwtotod.github.io/2017/01/13/JavaScript/javascript实现队列/&title=《javascript 实现队列》 — 网络日志&source=Beijing, China" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lwwtotod.github.io/2017/01/13/JavaScript/javascript实现队列/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《javascript 实现队列》 — 网络日志&url=http://lwwtotod.github.io/2017/01/13/JavaScript/javascript实现队列/&via=http://lwwtotod.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lwwtotod.github.io/2017/01/13/JavaScript/javascript实现队列/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/01/13/JavaScript/javascript实现集合/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">javascript 实现集合</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>blankserver &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lwwtotod.github.io/2017/01/13/JavaScript/javascript实现队列/&title=《javascript 实现队列》 — 网络日志&pic=http://lwwtotod.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lwwtotod.github.io/2017/01/13/JavaScript/javascript实现队列/&title=《javascript 实现队列》 — 网络日志&source=Beijing, China" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lwwtotod.github.io/2017/01/13/JavaScript/javascript实现队列/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《javascript 实现队列》 — 网络日志&url=http://lwwtotod.github.io/2017/01/13/JavaScript/javascript实现队列/&via=http://lwwtotod.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lwwtotod.github.io/2017/01/13/JavaScript/javascript实现队列/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACwElEQVR42u3aO3IcMQwFQN3/0nKVU2nG7wGkpaAZbe3Oh82AwAL8+IjH59/x/uvX8XTv0zX594cHHh4e3mjqmym+3/tESmaSL8fj8/Hw8PCu8d6DwdN08yvf2cnn97c8fo+Hh4f3o7z3K6NtepQJJ4uIh4eH9zt5m+27XZokycbDw8P7Wd6p17QJ9GyBrtRa8PDw8I5mubMgce/zxf4eHh4e3qKrvgkVeSEj2fRns8XDw8O7wctf37b58wNb7TPzwgQeHh7ePd77VPJyw6ZYsC9wRGA8PDy8Q7z9Fp+8cvOuNr0+HMHw8PDwvuyZbRjIG06z9T78XwEPDw/vGq+9uU2pZ/euFgsPDw/vGi9vbs2OGrRtsNk1UX8PDw8Pb83b3JyEkPetf1bGnbXW8PDw8M7yktZU28rKC76zMnGxEHh4eHhHebN2/ibJ3oScOk3Hw8PDu8bLv2kLtW1PKlma/EgBHh4e3g3evmibbOvJRt+m6UXyjYeHh3eUlzfsZ2WCduTBIErZ8fDw8C7w8qLDfstun5kXPuqTZXh4eHhrXl54bY86nWqV5ccOVkcK8PDw8ALezN2mxbPCxyyEPEY8PDw8vAu8Nmlum/2boJIv4mN/Dw8PD+8QLz8QkDA2hwCSVHsYZvDw8PD+C68tRiSNsaRUkSTZbcMMDw8P7wYvGS1jWDn+qYGHh4d3aOpt6pwXFNqyRZ76f/MEPDw8vGu8ZCpJCbVNoNuDsHUUwMPDwzvK+yxH3hJrFyVvdBUlZjw8PLwLvFPFiOTXdjnyFLxtwuHh4eHteXkwyJPjzeZ+ODDg4eHhXeMlZdNk688DwOYYQRGi8PDw8H4BLy8u5El2m9AXRWE8PDy8H+UlE2qPW+2LDv8IJ3h4eHjXeLOjA/uFaEshwwo0Hh4e3lHeJqltm2RtGbdtjx3r7+Hh4eF9z/sDZ741ynTieF8AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":230,"height":500},"mobile":{"show":true},"react":{"opacity":0.8},"log":false});</script></body>
+</html>

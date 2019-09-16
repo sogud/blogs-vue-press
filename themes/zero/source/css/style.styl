@@ -1,0 +1,115 @@
+$font-family = "Comic Sans MS", Monaco, "楷体", "Noto Sans Mono"
+
+jk_border-style = 
+  margin: 3% 0
+  padding: 3%
+  border: 3px solid #dddddd
+  border-radius: 15px
+  background-color #ffffff
+  box-sizing: border-box
+
+jk_link-style =
+  display: inline-block
+  color: #1E90FF
+  text-decoration: none
+  transition: all 0.1s linear
+  &:hover
+    transform: scale(1.01)
+    color: #4169E1
+
+jk_img-style = 
+  width: 100%
+  border-radius: 10px
+  box-shadow: 0 0 5px #1E90FF
+  transition: all 0.3s linear 
+  margin: 3% 0
+  &:hover
+    transform: scale(1.01)
+
+jk_inline-code-style =
+  blockquote, p, li, th, td
+    code 
+      color: #4682B4
+      font-size: 16px
+
+jk_table-style =
+    width: 100%
+    border-collapse: collapse
+    th, td
+      border: 1px solid lightblue
+      padding: 0.2% 2%
+    th 
+      background: lightblue
+    tr:nth-child(even)
+      background: #e5f9ff
+
+
+      
+
+body
+  margin: 0
+  padding: 0
+  // background: #1E1F20 url(/images/snow.gif) fixed
+  // background: honeydew
+  background:#fdfdfd -200px 30% url(/images/man.gif) fixed no-repeat
+  // background-size: 25%
+
+.container
+  box-sizing: border-box
+  background-color: #fefefe
+  border: 3px solid #999999
+  border-radius: 20px
+  width: 60%
+  margin: 1% auto
+  padding: 3%
+  display: flex
+  flex-direction: column
+  font-family: $font-family
+  line-height: 1.5
+
+h2 
+  color: #668BB6
+  &:before
+    content: "# "
+h3
+  color: #c396d8
+  &:before
+    content: "## "
+h4
+  color: #6fbfb1
+  &:before
+    content: "### "
+h5
+  color: #e77724
+  &:before
+    content: "#### "
+
+@import "_partial/header"
+@import "_partial/main"
+@import "_partial/footer"
+@import "_partial/article"
+@import "_partial/archive"
+@import "_partial/paginator"
+@import "_partial/search"  
+
+@media screen and (max-width: 1100px) {
+    body {
+      background:#ffffff;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .just-a-temp {
+      display: block;
+    } 
+
+    .post-title {
+      width: 76%
+    }
+
+    .totop {
+      display: none
+    }
+}
