@@ -1,5 +1,5 @@
 ---
-title: 常用命令
+title: git常用命令
 date: 2018-01-13 16:07:32
 tags:
   - JavaScript
