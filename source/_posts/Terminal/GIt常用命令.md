@@ -49,3 +49,7 @@ category: git
     The key fingerprint is:
     d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local
 ```
+### 查看全局安装过的包
+```
+npm list -g --depth 0
+```
