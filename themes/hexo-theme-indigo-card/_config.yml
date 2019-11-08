@@ -29,9 +29,9 @@ menu:
   #   url: /custom
 
 # 你的头像url
-avatar: /img/avatar.jpg
+avatar: https://avatars2.githubusercontent.com/u/20726419?s=460&v=4
 # avatar link
-avatar_link: /
+# avatar_link: https://avatars2.githubusercontent.com/u/20726419?s=460&v=4
 # 头像背景图
 brand: /img/brand.jpg
 # favicon

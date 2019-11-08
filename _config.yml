@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 网络日志
+title: 一个网络世界の日记
 subtitle: Web Developer & Designer
 description: Beijing, China
 keywords:
-author: blankserver
+author: 洵
 language:
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://lwwtotod.github.io
+url: http://onnezezt.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -79,7 +79,7 @@ theme: hexo-theme-indigo-card
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/lwwtotod/lwwtotod.github.io
+  repo: https://github.com/onnezezt/onnezezt.github.io
   branch: master
   # message: [message]
   
