@@ -10,6 +10,7 @@
     "build": "hexo generate --watch"
   },
   "dependencies": {
+    "gitalk": "^1.5.0",
     "hexo": "^3.9.0",
     "hexo-browsersync": "^0.3.0",
     "hexo-deployer-git": "^1.0.0",
