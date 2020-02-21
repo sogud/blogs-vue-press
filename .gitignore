@@ -1,4 +1,4 @@
 node_modules
-public
 dist
 package-lock.json
+theme

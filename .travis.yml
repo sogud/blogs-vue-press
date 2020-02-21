@@ -4,7 +4,7 @@ language: node_js
 sudo: required
 # 指定node_js版本
 node_js:
-  - 10.15.3
+  - lts/*
 # 指定缓存模块，可选。缓存可加快编译速度。
 # cache:
 #   directories:
@@ -14,14 +14,12 @@ node_js:
 # branches:
 #   only:
 #     - hexo
-
 # before_install:
 #   - npm install -g vuepress
 
 # Start: Build Lifecycle
 install:
   - npm install
-  - npx vuepress -v
 # 执行清缓存，生成网页操作
 script:
   - npm run docs:build
@@ -32,9 +30,9 @@ after_script:
   - git init
   - git config user.name "${GIT_USER_NAME}"
   - git config user.email "${GIT_USER_EMAIL}"
-  - git add .
+  - git add -A
   - git commit -m 'auto-deploy'
-  # - git push -f -q "https://${GITHUB_ACCESS_TOKEN}@${REPO}" master
+  - git push -f -q "https://${GITHUB_ACCESS_TOKEN}@${REPO}" master
   # 替换同目录下的_config.yml文件中gh_token字符串为travis后台刚才配置的变量，注意此处sed命令用了双引号。单引号无效！
   # - sed -i'' "s~https://github.com/onnezezt/onnezezt.github.io~https://${GITHUB_ACCESS_TOKEN}@github.com/onnezezt/onnezezt.github.io~" _config.yml
   # End: Build LifeCycle
