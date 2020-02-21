@@ -15,12 +15,13 @@ node_js:
 #   only:
 #     - hexo
 
-before_install:
-  - npm install -g vuepress
+# before_install:
+#   - npm install -g vuepress
 
 # Start: Build Lifecycle
 install:
   - npm install
+  - npx vuepress -v
 # 执行清缓存，生成网页操作
 script:
   - npm run docs:build
