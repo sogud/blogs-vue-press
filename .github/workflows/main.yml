@@ -19,7 +19,11 @@ jobs:
     - run: git config user.email ${{ secrets.GIT_USER_EMAIL }}
     - run: git add .
     - run: git commit -m 'auto-deploy'
-    - run: git push -f -q https://${{ secrets.ACCESS_TOKEN }}@${{ secrets.REPO }} master
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.ACCESS_TOKEN }}
+#     - run: git push -f -q https://${{ secrets.ACCESS_TOKEN }}@${{ secrets.REPO }} master
     - name: Run a multi-line script
       run: |
         echo Add other actions to build,
