@@ -17,10 +17,10 @@ node_js:
 
 # Start: Build Lifecycle
 install:
-  - npm install
+  - yarn
 # 执行清缓存，生成网页操作
 script:
-  - npm run docs:build
+  - yarn docs:build
 # 设置git提交名，邮箱；替换真实token到_config.yml文件，最后depoy部署
 after_script:
   - cd docs/.vuepress/dist
