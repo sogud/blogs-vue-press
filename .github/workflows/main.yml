@@ -1,0 +1,31 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run a one-line script
+      run: npm install
+    - run: npm run docs:build
+    - run: cd docs/.vuepress/dist
+    - run: echo '1net.world' > CNAME
+    - run: git init
+    - run: git config user.name ${{ secrets.GIT_USER_NAME }}
+    - run: git config user.email ${{ secrets.GIT_USER_EMAIL }}
+    - run: git add .
+    - run: git commit -m 'auto-deploy'
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.ACCESS_TOKEN }}
+        branch: gh-pages 
+#     - run: git push -f -q https://${{ secrets.ACCESS_TOKEN }}@${{ secrets.REPO }} master
+    - name: Run a multi-line script
+      run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.

@@ -1,7 +1,5 @@
 # 指定语言环境
 language: node_js
-# 指定需要sudo权限
-sudo: required
 # 指定node_js版本
 node_js:
   - 10.15.3
@@ -39,3 +37,4 @@ after_script:
   # - sed -i'' "s~https://github.com/onnezezt/onnezezt.github.io~https://${GITHUB_ACCESS_TOKEN}@github.com/onnezezt/onnezezt.github.io~" _config.yml
   # End: Build LifeCycle
   #- sed -i "s/regclientId/123/" docs/.vuepress/config.js
+  8198630e6cfcade944a184a16e79b3fd059d21df
