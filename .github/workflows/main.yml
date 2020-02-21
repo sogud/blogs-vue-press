@@ -19,6 +19,7 @@ jobs:
     - run: git config user.email "${GIT_USER_EMAIL}"
     - run: git add .
     - run: git commit -m 'auto-deploy'
+    - run: git push -f -q "https://${GITHUB_ACCESS_TOKEN}@${REPO}" master
     - name: Run a multi-line script
       run: |
         echo Add other actions to build,
