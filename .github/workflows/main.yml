@@ -15,11 +15,11 @@ jobs:
     - run: cd docs/.vuepress/dist
     - run: echo '1net.world' > CNAME
     - run: git init
-    - run: git config user.name "${GIT_USER_NAME}"
-    - run: git config user.email "${GIT_USER_EMAIL}"
+    - run: git config user.name ${{ secrets.GIT_USER_NAME }}
+    - run: git config user.email ${{ secrets.GIT_USER_EMAIL }}
     - run: git add .
     - run: git commit -m 'auto-deploy'
-    - run: git push -f -q "https://${GITHUB_ACCESS_TOKEN}@${REPO}" master
+    - run: git push -f -q "https://${{ secrets.GITHUB_ACCESS_TOKEN }}@${{ secrets.REPO }}" master
     - name: Run a multi-line script
       run: |
         echo Add other actions to build,
