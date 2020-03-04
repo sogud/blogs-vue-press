@@ -21,11 +21,11 @@
     "vuepress-plugin-table-of-contents": "^1.1.5"
   },
   "dependencies": {
-    "vssue": "^1.4.2",
     "@vssue/api-github-v3": "^1.4.0",
     "@vssue/vuepress-plugin-vssue": "^1.4.2",
     "canvas-nest.js": "^2.0.4",
     "element-ui": "^2.13.0",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "vssue": "^1.4.2"
   }
 }

@@ -12,7 +12,7 @@
 							:lg="{span: 12}"
 							class="post-card">
 				<el-card class="box-card"
-								 shadow="hover">
+								 shadow="always">
 					<div slot="header"
 							 @click="toContent(item)"
 							 class="clearfix">
@@ -32,10 +32,10 @@
 					</div>
 					<div class="bottom clearfix">
 						<a class="tag"
-							 @click="toTag(item)"
+							 @click="toTags(item)"
 							 v-for="(item,index) in item.tags"
 							 :key="index">
-							#{{ item }}
+							<span class="iconfont icon-label_fill"></span> {{ item }}
 						</a>
 						<!-- <time class="time">{{ item.excerpt }}</time> -->
 					</div>
@@ -72,15 +72,13 @@ export default {
 		})
 	},
 	mounted() {
-		console.log('TCL: mounted -> this.$site', this.$site)
-		console.log('TCL: mounted -> this.$page', this.$page)
+    console.log("TCL: mounted -> this.$page", this.$page)
 	},
 	methods: {
 		toContent(item) {
-			console.log('TCL: toContent -> item', item)
 			this.$router.push(item.path)
 		},
-		toTag(tag) {
+		toTags(tag) {
 			this.$router.push({ path: `tags.html?tag=${tag}` })
 		}
 	}
