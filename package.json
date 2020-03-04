@@ -27,6 +27,6 @@
     "element-ui": "^2.13.0",
     "moment": "^2.24.0",
     "vssue": "^1.4.2",
-    "vuepress-theme-minimalism": "^1.0.7"
+    "vuepress-theme-minimalism": "^1.0.8"
   }
 }
