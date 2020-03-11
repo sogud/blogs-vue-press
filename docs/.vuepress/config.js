@@ -9,14 +9,14 @@ module.exports = {
       all: '一覧',
       tags: 'カテゴリー',
       timeline: 'タイムライン',
-      seacrh:'探す'
+      seacrh: '探す'
     },
     footerText:
       '©2020 Power by <a href="https://vuepress.vuejs.org">VuePress</a> <a href="https://github.com/onnezezt/vuepress-theme-minimalism">Theme minimalism</a>',
     homeBackground: {
       //设置主页背景颜色，false title为默认颜色
       show: true,
-      fileName: '/65231299_p0.jpg'
+      fileName: '/bg.jpg'
     },
     PostsListPopover: false, //是否显示文章内容提示
     darkMode: {
@@ -27,11 +27,20 @@ module.exports = {
       off: '6'
     },
     vssue: {
+      //开启vssue评论
+      use: true,
       option: {
         owner: 'onnezezt',
         repo: 'onnezezt.github.io',
         clientId: 'xxxx',
         clientSecret: 'xxxx' // 只有在使用某些平台时需要
+      }
+    },
+    disqus: {
+      //开启disqus评论
+      use: false,
+      option: {
+        name: '1net-1' // Replace PAGE_URL with your page's canonical URL variable
       }
     }
     // sidebar: 'auto',

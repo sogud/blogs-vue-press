@@ -1,5 +1,5 @@
 ---
-title: javascript 实现图
+title: Nodejs ORM Sequelize 的基础配置
 date: 2018-01-13 16:07:32
 tags:
   - Koa
