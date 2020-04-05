@@ -16,7 +16,7 @@ module.exports = {
     homeBackground: {
       //设置主页背景颜色，false title为默认颜色
       show: true,
-      fileName: '/bg.jpg'
+      fileName: '/bg.png'
     },
     PostsListPopover: false, //是否显示文章内容提示
     darkMode: {
@@ -28,7 +28,7 @@ module.exports = {
     },
     vssue: {
       //开启vssue评论
-      use: true,
+      use: false,
       option: {
         owner: 'onnezezt',
         repo: 'onnezezt.github.io',
@@ -38,7 +38,7 @@ module.exports = {
     },
     disqus: {
       //开启disqus评论
-      use: false,
+      use: true,
       option: {
         name: '1net-1' // Replace PAGE_URL with your page's canonical URL variable
       }
