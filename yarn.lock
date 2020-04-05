@@ -7673,10 +7673,10 @@ vuepress-plugin-table-of-contents@^1.1.5:
   resolved "https://registry.yarnpkg.com/vuepress-plugin-table-of-contents/-/vuepress-plugin-table-of-contents-1.1.5.tgz#6c3540c24a84e0eeaf67cbe734c118f0194454d6"
   integrity sha512-OiUqmMq/+oB3Q9IJ3y+mzurSBmQZ6VvW5j9EiIDeo2FBo4/OJ2zhPeCw0gpUcln07qJOKBPLVYzfSt3J30g9dg==
 
-vuepress-theme-minimalism@^1.0.10:
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/vuepress-theme-minimalism/-/vuepress-theme-minimalism-1.0.10.tgz#234e1bcc1930c50b1b8d312cf05697ecbfb2d959"
-  integrity sha512-Tp/r8MtlGtCb5OidQRAhCdZ1dfDnkDK3i9FfeBde3Zt8OYRt/T+TaAfJdZIt0251xV054RBR3smfXS3RJgjc7w==
+vuepress-theme-minimalism@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/vuepress-theme-minimalism/-/vuepress-theme-minimalism-1.0.11.tgz#f1df4ecf526d5bcefa274f8e1f30571fe1214c99"
+  integrity sha512-BaU9whzwAcwQb3mNn9ww5FyehCO68D75lBdXVFfZl4QLf+qtos+rO+NLe+zlPRr+yhBBUsR/J+PzoinKNauvJg==
   dependencies:
     "@vssue/api-github-v3" "^1.4.0"
     "@vssue/vuepress-plugin-vssue" "^1.4.2"

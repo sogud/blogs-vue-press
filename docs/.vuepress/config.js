@@ -2,7 +2,7 @@ module.exports = {
   theme: 'vuepress-theme-minimalism',
   base: '/',
   title: '记录',
-  description: 'description...',
+  description: 'description..~.',
   themeConfig: {
     headerText: {
       index: 'ホーム',
