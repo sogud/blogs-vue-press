@@ -12,8 +12,8 @@ node_js:
 # branches:
 #   only:
 #     - hexo
-before_install:
-  - npm install -g vuepress
+# before_install:
+#   - npm install -g vuepress
 
 # Start: Build Lifecycle
 install:
