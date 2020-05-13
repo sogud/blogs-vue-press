@@ -1,7 +1,7 @@
 module.exports = {
   base: '/',
   title: '记录',
-  // theme: '@vuepress/blog',
+  theme: 'vuepress-theme-minimalism',
   themeConfig: {
     headerText: {
       index: 'ホーム',
