@@ -43,21 +43,22 @@ module.exports = {
 └─ package.json
 ```
 
-- 新建 index.md 文件,填写以下配置
 
-```yml
----
-home: true #代表首页
-actionText: 开始Start reading... #首页文字
-actionLink: /list #首页跳转链接
-# footer: ©2020 Power by VuePress Theme minimalism
----
-
-```
 - 书写正确格式的文章
 
 ```
+---
+title: vuepress主题配置
+tags:
+  - vuepress
+  - markdown
+---
 
+# vuepress-theme-minimalism
+
+## 介绍
+
+一款简洁的 vuepress 主题，兼容 hexo YAML front matter 语法。
 ```
 
 ## 目录结构
@@ -67,10 +68,7 @@ actionLink: /list #首页跳转链接
 ├── docs
 │   ├── .vuepress #vuepress配置文件夹
 │   ├── List.md #列表
-│   ├── Posts #文章存放文件夹
-│   ├── Tags.md #标签页
-│   ├── TimeLine.md #时间线
-│   └── index.md #首页
+│   ├── posts #文章存放文件夹
 ├── package.json
 └── yarn.lock
 

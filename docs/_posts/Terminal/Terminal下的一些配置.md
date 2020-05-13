@@ -1,5 +1,5 @@
 ---
-title: git常用命令
+title: Terminal下的一些配置
 date: 2018-01-13 16:07:32
 tags:
   - JavaScript
@@ -7,7 +7,23 @@ tags:
 category: git
 ---
 
+# mac下修改hosts文件
+```vim
+sudo vim /private/etc/hosts
+```
+
 # Git 配置用户信息与 SSH 密钥
+### mac下使用homebrew
+
+查看用 brew 安装的文件
+
+`brew list`
+
+`brew list`软件名 可以查看路径
+
+使用`vscode` 在`terminal`打开文件 `code ./`
+
+需要在`vscode`中安装`code`命令
 
 ### 安装完 Git 第一件事要配置自己的信息
 

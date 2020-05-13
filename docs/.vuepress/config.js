@@ -1,7 +1,7 @@
 module.exports = {
   base: '/',
   title: '记录',
-  theme: 'vuepress-theme-minimalism',
+  // theme: '@vuepress/blog',
   themeConfig: {
     headerText: {
       index: 'ホーム',
@@ -14,7 +14,7 @@ module.exports = {
       '©2020 Power by <a href="https://vuepress.vuejs.org">VuePress</a> <a href="https://github.com/onnezezt/vuepress-theme-minimalism">Theme minimalism</a>',
     homeBackground: {
       //设置主页背景颜色，false title为默认颜色
-      show: true,
+      show: false,
       fileName: '/bg.png'
     },
     PostsListPopover: false, //是否显示文章内容提示
