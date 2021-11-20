@@ -4,11 +4,11 @@ module.exports = {
   theme: 'vuepress-theme-minimalism',
   themeConfig: {
     headerText: {
-      index: 'ホーム',
-      all: '一覧',
-      tags: 'カテゴリー',
-      timeline: 'タイムライン',
-      seacrh: '探す'
+      index: '主页',
+      all: '全部',
+      tags: '标签',
+      timeline: '时间线',
+      seacrh: '搜索'
     },
     footerText:
       '©2020 Power by <a href="https://vuepress.vuejs.org">VuePress</a> <a href="https://github.com/onnezezt/vuepress-theme-minimalism">Theme minimalism</a>',

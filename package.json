@@ -7,9 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "docs:dev": "npx vuepress dev docs --no-clear-screen",
-    "docs:build": "npx vuepress build docs",
-    "debug": "npx vuepress dev docs --debug --no-clear-screen"
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "debug": "vuepress dev docs --debug"
   },
   "author": "",
   "license": "ISC",
