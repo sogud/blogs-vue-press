@@ -10,6 +10,7 @@ module.exports = {
       timeline: '时间线',
       seacrh: '搜索'
     },
+    footer:false
     footerText:
       '©2020 Power by <a href="https://vuepress.vuejs.org">VuePress</a> <a href="https://github.com/onnezezt/vuepress-theme-minimalism">Theme minimalism</a>',
     homeBackground: {
@@ -49,7 +50,7 @@ module.exports = {
       },
       {
         text: 'github',
-        link: 'https://github.com/lwwtotod'
+        link: 'https://github.com/sogud'
       }
     ],
     // sidebar: 'auto',
