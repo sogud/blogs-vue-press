@@ -1,7 +1,13 @@
+---
+title: 原型连
+tags:
+  - js
+---
+
 ```js
 // 虽然写在注释里，但是你要注意：
 // prototype是函数才会有的属性
-Person.prototype.name = 'Kevin'
+Person.prototype.name = "Kevin"
 var person1 = new Person()
 var person2 = new Person()
 console.log(person1.name) // Kevin
