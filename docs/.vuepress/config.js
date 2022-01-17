@@ -44,23 +44,19 @@ module.exports = {
     },
     nav: [
       {
-        text: "主页",
-        link: "/"
-      },
-      {
-        text: "全部",
+        text: "文档",
         link: "/list/"
       },
       {
         text: "标签",
         link: "/tags/"
       },
+      // {
+      //   text: "时间线",
+      //   link: "/timeline/"
+      // },
       {
-        text: "时间线",
-        link: "/timeline/"
-      },
-      {
-        text: "github",
+        text: "Github",
         link: "https://github.com/sogud"
       }
     ]
