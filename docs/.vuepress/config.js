@@ -22,8 +22,8 @@ module.exports = {
       //暗模式配置
       switch: true, //开关
       auto: false, //自动开启
-      on: "18", //时间
-      off: "6"
+      on: "18:00", //时间
+      off: "06:00" //时间
     },
     vssue: {
       //开启vssue评论
