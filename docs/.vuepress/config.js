@@ -3,11 +3,21 @@ const path = require("path")
 module.exports = {
   base: "/",
   title: "记录",
-  // permalink: "/:year/:month/:day/:slug",
   theme: "vuepress-theme-minimalism",
+  // theme: require.resolve("../../"),
   themeConfig: {
     footer: {
-      contact: "联系"
+      contact: "联系",
+      links: [
+        {
+          text: "GitHub",
+          link: "github.com"
+        },
+        {
+          text: "Twitter",
+          link: "github.com"
+        }
+      ]
     },
     home: {
       background: {
@@ -16,8 +26,6 @@ module.exports = {
         fileName: "/bg.png"
       }
     },
-    CursorSpecialEffects: false, // 鼠标点击特效
-    PostsListPopover: false, //是否显示文章内容提示
     darkMode: {
       //暗模式配置
       switch: true, //开关
@@ -25,22 +33,26 @@ module.exports = {
       on: "18:00", //时间
       off: "06:00" //时间
     },
-    vssue: {
-      //开启vssue评论
-      use: false,
-      option: {
-        owner: "name",
-        repo: "name.github.io",
-        clientId: "clientId",
-        clientSecret: "clientSecret" // 只有在使用某些平台时需要
-      }
-    },
-    disqus: {
-      //开启disqus评论
-      use: true,
-      option: {
-        name: "1net-1" // Replace PAGE_URL with your page's canonical URL variable
-      }
+    comment: {
+      service: "disqus",
+      shortname: "1net-1"
+      // vssue: {
+      //   //开启vssue评论
+      //   use: false,
+      //   option: {
+      //     owner: "name",
+      //     repo: "name.github.io",
+      //     clientId: "clientId",
+      //     clientSecret: "clientSecret" // 只有在使用某些平台时需要
+      //   }
+      // },
+      // disqus: {
+      //   //开启disqus评论
+      //   use: true,
+      //   option: {
+      //     name: "1net-1" // Replace PAGE_URL with your page's canonical URL variable
+      //   }
+      // }
     },
     nav: [
       {
@@ -49,7 +61,7 @@ module.exports = {
       },
       {
         text: "标签",
-        link: "/tags/"
+        link: "/tag/"
       },
       // {
       //   text: "时间线",
