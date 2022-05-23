@@ -17,6 +17,6 @@
     "vuepress": "^1.7.1"
   },
   "dependencies": {
-    "vuepress-theme-minimalism": "^1.1.7"
+    "vuepress-theme-minimalism": "^1.1.9"
   }
 }
