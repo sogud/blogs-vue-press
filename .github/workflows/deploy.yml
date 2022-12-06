@@ -34,7 +34,7 @@ jobs:
           registry-url: https://registry.npmjs.org/ 
       # Runs a single command using the runners shell
       - name: Install
-        run: npm install
+        run: npm install yarn -g && yarn install
 
       # Runs a set of commands using the runners shell
       - name: Build
