@@ -8,7 +8,7 @@
   },
   "scripts": {
     "docs:dev": "vuepress dev docs  --temp docs/.temp",
-    "docs:build": "vuepress build docs  --temp docs/.temp",
+    "docs:build": "vuepress build docs",
     "debug": "vuepress dev docs --debug  --temp docs/.temp"
   },
   "author": "",
@@ -17,6 +17,6 @@
     "vuepress": "1.7.1"
   },
   "dependencies": {
-    "vuepress-theme-minimalism": "1.1.9"
+    "vuepress-theme-minimalism": "1.1.10"
   }
 }
